@@ -12,8 +12,12 @@
 
 .wrapper {
   display: grid;
-  grid-template-rows: var(--header-thickness) calc(100vh - var(--header-thickness));
-  grid-template-columns: var(--navbar-thickness) calc(100vw - var(--navbar-thickness));
+  grid-template-rows: var(--header-thickness) calc(
+      100vh - var(--header-thickness)
+    );
+  grid-template-columns: var(--navbar-thickness) calc(
+      100vw - var(--navbar-thickness)
+    );
 }
 
 .session {
@@ -32,14 +36,23 @@
   grid-column: 2/3;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 0, 0, 0;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+}
+
+.data-tab {
+  @apply border-t border-b border-gray-200 w-full;
+}
+
+.row {
+  @apply grid grid-cols-4 border-b border-gray-200;
+}
+
+.data-entry {
+  @apply p-2 text-center border-r border-gray-200;
+
+  &:last-child {
+    @apply border-r-0;
+  }
 }
