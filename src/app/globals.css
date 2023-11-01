@@ -41,21 +41,19 @@ body {
   background: rgb(var(--background-rgb));
 }
 
-/*#region tab-data*/
-.tab-data {
-  @apply border-t border-b border-gray-200 w-full;
+.tab {
+  @apply row-start-2 row-end-3 col-start-2 col-end-3 m-6;
 }
 
+/*#region tab-data*/
+.tab-data {}
+
 .row {
-@apply grid grid-cols-4 border-b border-gray-200;
+  display: grid; 
 }
 
 .data-entry {
-@apply p-2 text-center border-r border-gray-200;
-
-}
-.data-entry:last-child {
-  @apply border-r-0;
+  @apply p-2 text-center border border-gray-200;
 }
 
 
