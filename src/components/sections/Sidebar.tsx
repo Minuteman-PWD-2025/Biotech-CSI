@@ -1,18 +1,14 @@
+import { Box, Card, Paper } from "@mui/material"
+
 // Placeholder. Should derive from one of our custom Button components.
-export function SidebarButton({}) {
+export function SidebarButton({ }) {
     return (
         <></>
     )
 }
 
-export default function Sidebar({
-    buttons
-}: {
-    buttons: React.ReactNode[]
-}) {
+export default function Sidebar() {
     return (
-    <div className="sidebar">
-        {buttons}
-    </div>
+        <Paper className="sidebar" component="div" elevation={3}/>
     )
 }

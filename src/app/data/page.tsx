@@ -1,67 +1,67 @@
-import { Kelly_Slab } from 'next/font/google';
-import React from 'react';
-
-interface DataEntryProps {
-    value: string;
-}
-
-const DataEntry: React.FC<DataEntryProps> = ({ value }) => {
-    return (
-        <div className="data-entry">
-            {value}
-        </div>
-    );
-}
-
-interface RowProps {
-    is_headers: boolean;
-    columns: string[];
-    values: string[];
-}
-
-const Row: React.FC<RowProps> = ({ columns, values }) => {
-    return (
-        <div className="row" style={{
-            // turns ["val1", "val2", "val3"] into "1fr 1fr 1fr"; Automatically sets column amount.
-            gridTemplateColumns: columns.map(() =>"1fr").join(" ")
-        }}>
-            {columns.map((_, index) => { // we map `columns` instead of `values` so we always get the same amount of entries in each row.
-                const value = values.at(index) ?? ""
-                return <DataEntry key={index} value={value} />
-            })}
-        </div>
-    );
-}
-
-interface DataProps {
-    columns: string[]
-    rows: string[][];
-}
+'use client';
+import { createTheme } from '@mui/material';
+import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
+import React, { useMemo } from 'react';
 
 export default function Data() {
-    /*const data: DataProps = {
-        columns: [],
-        rows: []
-    }*/
+    const data = [
+        {
+            id: 2594,
+            person: "Mr. Llama",
+        },
+        {
+            id: 2398,
+            person: "Mr. Pidgeon",
+        },
+        {
+            id: 1350,
+            person: "Ms. Eagle",
+        },
+        {
+            id: 9285,
+            person: "John",
+        },
+        {
+            id: 1835,
+            person: "Ms. Fish",
+        },
+        {
+            id: 6135,
+            person: "Mr. Pig",
+        },
+        {
+            id: 3560,
+            person: "Mr. Steven",
+        },
+    ]
 
-    // This is sample data! The real `data` should be programmatically set.
-    const data: DataProps = {
-        columns: ["1", "2", "3", "4", "5"],
-        rows: [
-            ["x", "x", "x", "x"],
-            ["x", "x", "", ""],
-            ["x", "x", "x", "x", "x"],
-            ["x", "", "x", "x"],
-            ["x", "x", "x", ""],
-            ["x", "x", "x", "x", "x"]
-        ]
-    };
+    const columns = useMemo(
+        () => [
+            {
+                accessorKey: 'id',
+                header: 'Id',
+            },
+            {
+                accessorKey: 'person',
+                header: 'Person',
+            },
+        ],
+        [],
+    );
+
+    const table = useMaterialReactTable({
+        columns,
+        data,
+        enablePagination: false, //disable a default feature
+        enableBottomToolbar: false,
+        enableSorting: true,
+        columnFilterModeOptions: null,
+        enableFullScreenToggle: false,
+    });
+
     return (
-        <div className="tab-data tab">
-            {<Row is_headers={true} columns={data.columns} values={data.columns} />}
-            {data.rows.map((value, index) =>
-                <Row columns={data.columns} values={value} is_headers={false} />
-            )}
+        <div className="tab">
+            <MaterialReactTable table={table}/> 
         </div>
     );
 }
