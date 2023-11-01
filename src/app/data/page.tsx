@@ -57,6 +57,7 @@ export default function Data() {
         enableSorting: true,
         columnFilterModeOptions: null,
         enableFullScreenToggle: false,
+        
     });
 
     return (

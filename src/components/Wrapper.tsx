@@ -11,15 +11,6 @@ export default function Wrapper({ children } : { children: React.ReactNode}) {
             background: {
                 default: "#fff"
             }
-        },
-        components: {
-            MuiTableBody: {
-                styleOverrides: {
-                    root: {
-                        backgroundColor: "black"
-                    }
-                }
-            }
         }
     }
 
