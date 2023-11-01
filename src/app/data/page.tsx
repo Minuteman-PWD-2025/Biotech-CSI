@@ -32,7 +32,7 @@ interface DataProps {
 
 export default function Data({ data = [] }: DataProps) {
     return (
-        <div className="data-tab">
+        <div className="row-start-2 row-end-3 col-start-2 col-end-3 data-tab">
             {data.map((RowValues, index) =>
                 <Row key={index} values={RowValues} />
             )}
