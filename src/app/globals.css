@@ -3,25 +3,43 @@
 @tailwind utilities;
 
 :root {
+  --header-thickness: 80px;
+  --navbar-thickness: 200px;
+
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: var(--header-thickness) calc(100vh - var(--header-thickness));
+  grid-template-columns: var(--navbar-thickness) calc(100vw - var(--navbar-thickness));
+}
+
+.session {
+  @apply bg-gray-100 border-b-gray-300 border-b;
+}
+
+.sidebar {
+  @apply outline-1 outline-gray-200 outline;
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.header {
+  @apply bg-gray-100 border-b-gray-300 border-b;
+  grid-row: 1/2;
+  grid-column: 2/3;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-rgb: 0, 0, 0;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
 }
