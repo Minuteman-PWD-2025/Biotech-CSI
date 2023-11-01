@@ -41,18 +41,22 @@ body {
   background: rgb(var(--background-rgb));
 }
 
-.data-tab {
+/*#region tab-data*/
+.tab-data {
   @apply border-t border-b border-gray-200 w-full;
 }
 
 .row {
-  @apply grid grid-cols-4 border-b border-gray-200;
+@apply grid grid-cols-4 border-b border-gray-200;
 }
 
 .data-entry {
-  @apply p-2 text-center border-r border-gray-200;
+@apply p-2 text-center border-r border-gray-200;
 
-  &:last-child {
-    @apply border-r-0;
-  }
 }
+.data-entry:last-child {
+  @apply border-r-0;
+}
+
+
+/*#endregion*/
