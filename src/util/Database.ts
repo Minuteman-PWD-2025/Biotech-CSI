@@ -29,12 +29,21 @@ export class Row {
     public getCell(columnName: string): any {
         return this.data.get(columnName)
     }
+
+    public toString(): string {
+        let pairs: string[] = [];
+        this.data.forEach((value, key) => {
+            pairs.push(`${key},${value}`)
+        })
+        return pairs.join(';')
+    }
 }
 
 export default class Database {
     static requestUrl: string = "https://localhost:8080/api/";
 
     // `GET/table=${tableName}`
+    // TODO: Implement Connection To Webserver
     public static async getTable(token: string, tableName: string): Promise<DatabaseResponse<Row[]>> {
         const response = await fetch(this.requestUrl.concat(`GET/token=${token}&table=${tableName}`));
         const json = await response.json();
@@ -47,7 +56,9 @@ export default class Database {
             })
         })
     }
+    
     // `Get/table=${tableName}&column=${columnName}&unique=${unique}`
+    // TODO: Implement Connection To Webserver
     public static async getColumn(token: string, tableName: string, columnName: string, unique: boolean = false): Promise<DatabaseResponse<string[]>> {
         const response = await fetch(this.requestUrl.concat(`GET/token=${token}&table=${tableName}&column=${columnName}&unique=${unique}`));
         const json = await response.json();
@@ -62,8 +73,9 @@ export default class Database {
     }
 
     // `POST/table=${tableName}&insert=${column,cell;column,cell}`
+    // TODO: Implement Connection To Webserver
     public static async postRow(token:string, tableName: string, row: Row): Promise<DatabaseResponse<void>> {
-        const response = await fetch(this.requestUrl.concat(`POST/token=${token}&table=${tableName}&insert=${row.data.forEach}`));
+        const response = await fetch(this.requestUrl.concat(`POST/token=${token}&table=${tableName}&insert=${row.toString()}`));
         const json = await response.json();
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
