@@ -4,7 +4,7 @@
 
 :root {
   --header-thickness: 65px;
-  --navbar-thickness: 200px;
+  --navbar-thickness: 240px;
 
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 245, 245, 245;
@@ -19,12 +19,20 @@
       100vw - var(--navbar-thickness)
     );
 }
-
+/*#region sidebar*/
 .sidebar {
-  @apply m-2;
+  @apply bg-gray-100 m-2;
   grid-row: 2/3;
   grid-column: 1/2;
+
+  border-bottom: 1px solid rgb(224, 224, 224);
 }
+
+.sidebar-button {
+  @apply block mb-4 w-full text-left;
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+/*#endregion sidebar*/
 
 .header {
   height: var(--header-thickness);

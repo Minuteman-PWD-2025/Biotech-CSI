@@ -1,36 +1,36 @@
 'use client';
-import { createTheme } from '@mui/material';
+
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
 import React, { useMemo } from 'react';
 
 export default function Data() {
     const data = [
         {
-            id: 2594,
+            id: 1,
             person: "Mr. Llama",
         },
         {
-            id: 2398,
+            id: 2,
             person: "Mr. Pidgeon",
         },
         {
-            id: 1350,
+            id: 3,
             person: "Ms. Eagle",
         },
         {
-            id: 9285,
+            id: 4,
             person: "John",
         },
         {
-            id: 1835,
+            id: 5,
             person: "Ms. Fish",
         },
         {
-            id: 6135,
+            id: 6,
             person: "Mr. Pig",
         },
         {
-            id: 3560,
+            id: 7,
             person: "Mr. Steven",
         },
     ]
@@ -57,7 +57,9 @@ export default function Data() {
         enableSorting: true,
         columnFilterModeOptions: null,
         enableFullScreenToggle: false,
-        
+        muiTablePaperProps: {
+            elevation: 0,
+        },
     });
 
     return (

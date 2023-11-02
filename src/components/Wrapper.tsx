@@ -2,29 +2,36 @@
 
 import Sidebar from "./sections/Sidebar"
 import Header from "./sections/Header"
-import React from "react";
-import { ThemeOptions, ThemeProvider, createTheme } from "@mui/material";
+import React, { useMemo } from "react";
+import { ThemeProvider, createTheme, useTheme } from "@mui/material/styles";
 
-export default function Wrapper({ children } : { children: React.ReactNode}) {
-    const muiTheme: ThemeOptions = {
-        palette: {
-            background: {
-                default: "#fff"
-            }
-        }
-    }
+export default function Wrapper({ children }: { children: React.ReactNode }) {
+    const globalTheme = useTheme(); //(optional) if you already have a theme defined in your app root, you can import here
+
+    const tableTheme = useMemo(
+        () =>
+            createTheme({
+                palette: {
+                    mode: globalTheme.palette.mode, //let's use the same dark/light mode as the global theme
+                    primary: globalTheme.palette.primary, 
+                },
+                typography: {
+                    button: {
+                        accentColor: "palegoldenrod",
+                    },
+                },
+            }),
+        [globalTheme],
+    );
+
 
     return (
-        <ThemeProvider theme={createTheme(muiTheme)}>
-        <div className="wrapper">
-            <Sidebar/>
-            <Header/>
-
-            {children}
-
-            {/* Used for background */}
-            <div className="absolute bg-gray-100 outline-1 -outline-offset-1 outline-gray-300 outline row-start-1 row-end-2 col-start-1 col-end-3 -z-1"></div>
-        </div>
+        <ThemeProvider theme={tableTheme}>
+            <div className="wrapper">
+                <Sidebar />
+                <Header />
+                {children}
+            </div>
         </ThemeProvider>
     )
 }
