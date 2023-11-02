@@ -4,16 +4,39 @@ export interface DatabaseResponse<T> {
     data: T
 }
 
-export interface Row {
-    data: string[][]
+export interface Cell<T> {
+    key: string,
+    value: T
+}
+
+export class Row {
+    data: Map<string, any>
+
+    constructor(...rows: Cell<any>[]) {
+        const _data: Map<string, any> = new Map<string, any>()
+
+        rows.forEach(cell => {
+            _data.set(cell.key, cell.value);
+        })
+
+        this.data = _data;
+    }
+
+    public setCell(columnName: string, value: any): void {
+        this.data.set(columnName, value)
+    }
+
+    public getCell(columnName: string): any {
+        return this.data.get(columnName)
+    }
 }
 
 export default class Database {
     requestUrl: string = "https://localhost:8080/api/";
 
     // `GET/table=${tableName}`
-    public async getTable(token: string, tableName: string): Promise<DatabaseResponse<Row[]>> {
-        
+    public static async getTable(token: string, tableName: string): Promise<DatabaseResponse<Row[]>> {
+
         return {
             error: 0,
             message: "",
@@ -21,7 +44,8 @@ export default class Database {
         }
     }
     // `Get/table=${tableName}&column=${columnName}&unique=${unique}`
-    public async getColumn(token: string, tableName: string, columnName: string, unique: boolean = false): Promise<DatabaseResponse<string[]>> {
+    public static async getColumn(token: string, tableName: string, columnName: string, unique: boolean = false): Promise<DatabaseResponse<string[]>> {
+
 
         return {
             error: 0,
@@ -31,12 +55,12 @@ export default class Database {
     }
 
     // `POST/table=${tableName}&insert=${column,cell;column,cell}`
-    public async postRow(tableName: string, row: Row): Promise<DatabaseResponse<void>> {
-        
+    public static async postRow(tableName: string, row: Row): Promise<DatabaseResponse<void>> {
+
         return {
             error: 0,
             message: "",
-            data: void[]
+            data: void []
         }
     }
 }
