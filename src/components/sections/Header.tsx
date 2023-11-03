@@ -1,9 +1,13 @@
-export default function Header({
+import { AppBar, IconButton, Toolbar, Typography, makeStyles } from "@mui/material";
 
-}: {
-
-}) {
+export default function Header() {
     return (
-        <div className="header"></div>
+        <AppBar className="header">
+            <Toolbar variant="regular" component="div">
+                <Typography variant="h6" color="inherit" component="div">
+                    Biotech CSI
+                </Typography>
+            </Toolbar>
+        </AppBar>
     )
 }
