@@ -1,3 +1,5 @@
+import querystring from 'querystring'
+
 export interface DatabaseResponse<T> {
     error: number,
     message: string,
@@ -45,7 +47,8 @@ export default class Database {
     // `GET/token=${token}&table=${tableName}`
     // TODO: Implement Connection To Webserver
     public static async getTable(token: string, tableName: string): Promise<DatabaseResponse<Row[]>> {
-        const response = await fetch(this.requestUrl.concat(`GET/token=${token}&table=${tableName}`));
+        const query = `GET/${querystring.stringify({token: token, table: tableName})}`
+        const response = await fetch(this.requestUrl.concat(query));
         const json = await response.json();
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
@@ -60,7 +63,8 @@ export default class Database {
     // `GET/token=${token}&table=${tableName}&column=${columnName}&unique=${unique}`
     // TODO: Implement Connection To Webserver
     public static async getColumn(token: string, tableName: string, columnName: string, unique: boolean = false): Promise<DatabaseResponse<string[]>> {
-        const response = await fetch(this.requestUrl.concat(`GET/token=${token}&table=${tableName}&column=${columnName}&unique=${unique}`));
+        const query = `GET/${querystring.stringify({token: token, table: tableName, column: columnName, unique: unique})}`
+        const response = await fetch(this.requestUrl.concat(query));
         const json = await response.json();
 
         return new Promise<DatabaseResponse<string[]>>(async resolve => {
@@ -75,7 +79,8 @@ export default class Database {
     // `POST/token=${token}&table=${tableName}&insert=${column,cell;column,cell}`
     // TODO: Implement Connection To Webserver
     public static async postRow(token:string, tableName: string, row: Row): Promise<DatabaseResponse<void>> {
-        const response = await fetch(this.requestUrl.concat(`POST/token=${token}&table=${tableName}&insert=${row.toString()}`));
+        const query = `POST/${querystring.stringify({token: token, table: tableName, insert: row.toString()})}`
+        const response = await fetch(this.requestUrl.concat(query));
         const json = await response.json();
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
@@ -90,7 +95,8 @@ export default class Database {
     // `PUT/token=${token}&table=${tableName}&where=${column,cell;column,cell}&update=$(column,cell;column,cell)`
     // TODO: Implement Connection To Webserver
     public static async putRow(token:string, tableName: string, conditionalRow: Row, row: Row): Promise<DatabaseResponse<void>> {
-        const response = await fetch(this.requestUrl.concat(`PUT/token=${token}&table=${tableName}&where=${conditionalRow.toString()}&update=${row.toString(true)}`));
+        const query = `put/${querystring.stringify({token: token, table: tableName, where: conditionalRow.toString(), update: row.toString(true)})}`
+        const response = await fetch(this.requestUrl.concat(query));
         const json = await response.json();
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
@@ -105,7 +111,8 @@ export default class Database {
     // `DELETE/token=${token}&table=${tableName}&where=${column,cell;column,cell}`
     // TODO: Implement Connection To Webserver
     public static async deleteRows(token: string, tableName: string, conditionalRow: Row): Promise<DatabaseResponse<Row[]>> {
-        const response = await fetch(this.requestUrl.concat(`DELETE/token=${token}&table=${tableName}&where=${conditionalRow.toString()}`));
+        const query = `DELETE/${querystring.stringify({token: token, table: tableName, where: conditionalRow.toString()})}`
+        const response = await fetch(this.requestUrl.concat(query));
         const json = await response.json();
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
