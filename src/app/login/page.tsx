@@ -9,10 +9,17 @@ function Login() {
         <>
             <TextField id="username" label="Username" variant="outlined" />
             <TextField id="password" label="Password" variant="outlined" />
-            <Button />
-            <Button />
+            <Button id="login" size="small" >
+                Login
+            </Button>
+            <Button id="forgot-pass" size="small" >
+                Forgot
+            </Button>
         </>
     );
+}
+
+function SendData() {
 }
 
 export default function Data() {

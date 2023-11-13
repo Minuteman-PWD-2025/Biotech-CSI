@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\login",
+    "\\src\\app\\logs",
+    "\\src\\app\\materials",
+    "\\src\\app\\people",
+    "\\src\\components",
+    "\\src\\components\\sections",
+    "\\src\\util"
+  ],
+  "SelectedNode": "\\src\\util\\Database.ts",
+  "PreviewInSolutionExplorer": false
+}
