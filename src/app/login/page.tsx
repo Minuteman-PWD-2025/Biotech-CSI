@@ -17,10 +17,10 @@ function Login() {
         <>
             <TextField id="username" label="Username" variant="outlined" />
             <TextField id="password" label="Password" variant="outlined" />
-            <Button id="login" size="small" variant="outlined" onClick={ () => SendData('login')}>
+            <Button id="login" size="small" onClick={ () => SendData('login')}>
                 Login
             </Button>
-            <Button id="forgot-pass" size="small" variant="outlined" onClick={ () => ForgotPass()}>
+            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()}>
                 Forgot my password
             </Button>
         </>
