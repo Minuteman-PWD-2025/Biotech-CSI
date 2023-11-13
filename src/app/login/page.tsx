@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { Button, Paper, TextField } from "@mui/material"
+import { Button, Paper, TextField, Grid, Box, Stack } from "@mui/material"
 import React from 'react';
 
 
@@ -17,11 +17,11 @@ function Login() {
         <>
             <TextField id="username" label="Username" variant="outlined" />
             <TextField id="password" label="Password" variant="outlined" />
-            <Button id="login" size="small" onClick={ () => SendData('login')}>
+            <Button id="login" size="small" variant="outlined" onClick={ () => SendData('login')}>
                 Login
             </Button>
-            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()}>
-                Forgot
+            <Button id="forgot-pass" size="small" variant="outlined" onClick={ () => ForgotPass()}>
+                Forgot my password
             </Button>
         </>
     );
@@ -32,9 +32,22 @@ export default function Data() {
 
     return (
         <div className="tab">
-            <Paper elevation={8}>
-                <Login></Login>
-            </Paper>
+            <Stack spacing={2}>
+                <Grid container spacing={2} align="center">
+                    <Box sx={{
+                        p: 2,
+                        borderRadius: 5,
+                        display: 'grid',
+                        gridTemplateColumns: { md: '1fr 1fr' },
+                        gap: 3
+                    }}
+                    >
+                        <Paper elevation={8} align="center">
+                            <Login></Login>
+                        </Paper>
+                    </Box>
+                </Grid>
+            </Stack>
         </div>
     );
 }
