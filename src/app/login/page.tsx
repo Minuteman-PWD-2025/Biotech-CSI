@@ -10,8 +10,8 @@ function Login() {
             <TextField>
                 Username
             </TextField>
-                Password
             <TextField>
+                Password
             </TextField>
             <Button>
                 Login
