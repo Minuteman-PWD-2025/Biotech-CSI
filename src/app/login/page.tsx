@@ -7,18 +7,10 @@ import React from 'react';
 function Login() {
     return (
         <>
-            <TextField>
-                Username
-            </TextField>
-            <TextField>
-                Password
-            </TextField>
-            <Button>
-                Login
-            </Button>
-            <Button>
-                Forgot my password!
-            </Button>
+            <TextField id="username" label="Username" variant="outlined" />
+            <TextField id="password" label="Password" variant="outlined" />
+            <Button />
+            <Button />
         </>
     );
 }
@@ -27,7 +19,7 @@ export default function Data() {
 
     return (
         <div className="tab">
-            <Paper>
+            <Paper elevation={8}>
                 <Login></Login>
             </Paper>
         </div>
