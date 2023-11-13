@@ -33,8 +33,8 @@ export default function Data() {
     return (
         <div className="tab">
                 <Stack spacing={2}>
-                    <Paper elevation={8} align="center">
-                        <Grid container spacing={2} align="center">
+                    <Paper elevation={8} alignItems="flex-end">
+                        <Grid container spacing={2} align="center" justifyContent="center">
                             <Box sx={{
                                 p: 4,
                                 borderRadius: 6,
