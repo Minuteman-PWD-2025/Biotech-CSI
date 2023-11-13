@@ -32,22 +32,22 @@ export default function Data() {
 
     return (
         <div className="tab">
-            <Stack spacing={2}>
-                <Grid container spacing={2} align="center">
-                    <Box sx={{
-                        p: 2,
-                        borderRadius: 5,
-                        display: 'grid',
-                        gridTemplateColumns: { md: '1fr 1fr' },
-                        gap: 3
-                    }}
-                    >
-                        <Paper elevation={8} align="center">
-                            <Login></Login>
-                        </Paper>
-                    </Box>
-                </Grid>
-            </Stack>
+                <Stack spacing={2}>
+                    <Paper elevation={8} align="center">
+                        <Grid container spacing={2} align="center">
+                            <Box sx={{
+                                p: 4,
+                                borderRadius: 6,
+                                display: 'grid',
+                                gridTemplateColumns: { md: '1fr 1fr' },
+                                gap: 2
+                            }}
+                            >
+                                <Login></Login>
+                            </Box>
+                        </Grid>
+                    </Paper>
+                </Stack>
         </div>
     );
 }
