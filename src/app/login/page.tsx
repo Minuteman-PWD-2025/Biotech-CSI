@@ -5,11 +5,11 @@ import React from 'react';
 
 
 function SendData({string} : id) {
-    // put actual stuff to look at user data here
+    // put actual stuff to look at user data here, ideally will look through our database for user data
 }
 
 function ForgotPass() {
-    // put actual forgot password stuff here
+    // put actual forgot password stuff here, sending stuff to emails and whatnot
 }
 
 function Login() {
