@@ -23,6 +23,9 @@ export default function Sidebar() {
             <Button className="sidebar-button" variant={usePathname() == "/logs" ? "outlined" : "contained"} disableElevation LinkComponent="a" href="logs">
                 Logs
             </Button>
+            <Button className="sidebar-button" variant={usePathname() == "/login" ? "outlined" : "contained"} disableElevation LinkComponent="a" href="login">
+                Login test
+            </Button>
         </Paper>
     )
 }
