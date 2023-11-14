@@ -42,7 +42,7 @@ export class Row {
 }
 
 export default class Database {
-    static requestUrl: string = "https://localhost:8080/api?";
+    static requestUrl: string = "http://localhost:8080/api?";
 
     // `GET/token=${token}&table=${tableName}`
     // TODO: Implement Connection To Webserver
@@ -53,9 +53,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? []
             })
         })
     }
@@ -69,9 +69,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<string[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? []
             })
         })
     }
@@ -85,8 +85,8 @@ export default class Database {
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
+                error: json.error ?? 404,
+                message: json.message ?? "",
                 data: void[]
             })
         })
@@ -101,8 +101,8 @@ export default class Database {
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
+                error: json.error ?? 404,
+                message: json.message ?? "",
                 data: void[]
             })
         })
@@ -117,9 +117,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? []
             })
         })
     }
