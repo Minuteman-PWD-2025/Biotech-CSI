@@ -6,10 +6,13 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import React from 'react';
 
 
-function SendData({ id } : string) {
+interface Data {
+    id: string;
+}
+
+function SendData({ id } : Data) {
     // put actual stuff to look at user data here, ideally will look through our database for user data
-    console.log("send data! "+ id);
-    
+    console.log("send data! " + id);
 }
 
 function ForgotPass() {
@@ -17,17 +20,22 @@ function ForgotPass() {
     console.log("forgot password! ");
 }
 
+
 function Login() {
+
+
+    const userId = "login";
+
     return (
         <>
             <h1> Login </h1>
             <TextField id="username" label="Username" variant="outlined" />
             <TextField id="password" label="Password" variant="outlined" />
-            <Button id="login" size="small" onClick={ () => SendData('login')} endIcon={<SendIcon />} >
+            <Button id="login" size="small" onClick={ SendData({ id: userId }) } endIcon={<SendIcon />} >
                 Login
             </Button>
             <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()} endIcon={<QuestionMarkIcon />}>
-                Forgot my password
+                Forgot password
             </Button>
         </>
     );
@@ -48,7 +56,7 @@ export default function Data() {
                                 gridTemplateColumns: { md: '1fr' },
                                 gap: 2
                             }}>
-                                <Login></Login>
+                                <Login />
                             </Box>
                         </Grid>
                     </Paper>
