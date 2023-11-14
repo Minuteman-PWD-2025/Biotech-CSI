@@ -8,11 +8,13 @@ import React from 'react';
 
 interface Data {
     id: string;
+    username: string;
+    password: string;
 }
 
-function SendData({ id } : Data) {
+function SendData({ id, username, password } : Data) {
     // put actual stuff to look at user data here, ideally will look through our database for user data
-    console.log("send data! " + id);
+    console.log("send data! " + id + " " + username + " " + password);
 }
 
 function ForgotPass() {
@@ -25,13 +27,15 @@ function Login() {
 
 
     const userId = "login";
+    const userName = "logan walker";
+    const userPass = "password test";
 
     return (
         <>
             <h1> Login </h1>
             <TextField id="username" label="Username" variant="outlined" />
             <TextField id="password" label="Password" variant="outlined" />
-            <Button id="login" size="small" onClick={ SendData({ id: userId }) } endIcon={<SendIcon />} >
+            <Button id="login" size="small" onClick={ () => SendData({ id: userId, username: userName, password: userPass}) } endIcon={<SendIcon />} >
                 Login
             </Button>
             <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()} endIcon={<QuestionMarkIcon />}>
