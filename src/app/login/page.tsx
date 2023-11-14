@@ -39,7 +39,7 @@ export default function Data() {
                                 p: 4,
                                 borderRadius: 6,
                                 display: 'grid',
-                                gridTemplateColumns: { md: '1fr 1fr' },
+                                gridTemplateColumns: { md: '1fr' },
                                 gap: 2
                             }}>
                                 <Login></Login>
