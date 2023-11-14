@@ -1,10 +1,9 @@
-'use client';
-
-import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
-import React, { useMemo } from 'react';
+import Table from '@/components/Table';
+import Database, { Row } from '@/util/Database';
+import React from 'react';
 
 export default function Data() {
-    const data = [
+    /*const data: any[] = [
         {
             id: 1,
             person: "Mr. Llama",
@@ -33,38 +32,18 @@ export default function Data() {
             id: 7,
             person: "Mr. Steven",
         },
-    ]
+    ]*/
 
-    const columns = useMemo(
-        () => [
-            {
-                accessorKey: 'id',
-                header: 'Id',
-            },
-            {
-                accessorKey: 'person',
-                header: 'Person',
-            },
-        ],
-        [],
-    );
-
-    const table = useMaterialReactTable({
-        columns,
-        data,
-        enablePagination: false, //disable a default feature
-        enableBottomToolbar: false,
-        enableSorting: true,
-        columnFilterModeOptions: null,
-        enableFullScreenToggle: false,
-        muiTablePaperProps: {
-            elevation: 0,
-        },
-    });
+    let data: Row[] = []
+    Database.getTable("", "people").then((res) => {
+        if (res.error == 0) {
+            data = res.data
+        }
+    })
 
     return (
         <div className="tab">
-            <MaterialReactTable table={table}/> 
+            <Table data={data} />
         </div>
     );
 }

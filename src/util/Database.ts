@@ -37,12 +37,12 @@ export class Row {
         this.data.forEach((value, key) => {
             if (!(removeNull && !value)) pairs.push(`${key},${value}`)
         })
-        return pairs.join(';')
+        return pairs.join('|')
     }
 }
 
 export default class Database {
-    static requestUrl: string = "https://localhost:8080/api/";
+    static requestUrl: string = "https://localhost:8080/api?";
 
     // `GET/token=${token}&table=${tableName}`
     // TODO: Implement Connection To Webserver
