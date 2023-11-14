@@ -1,8 +1,11 @@
 ﻿'use client';
 
-import { Button, Paper, TextField, Grid, Box, Stack} from "@mui/material"
+import { Button, Paper, TextField, Grid, Box, Stack, InputAdornment} from "@mui/material"
 import SendIcon from '@mui/icons-material/Send'
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React from 'react';
 
 
@@ -33,12 +36,24 @@ function Login() {
     return (
         <>
             <h1> Login </h1>
-            <TextField id="username" label="Username" variant="outlined" />
-            <TextField id="password" label="Password" variant="outlined" />
+            <TextField id="username" label="Username" variant="outlined" InputProps={{
+                startAdornment: (
+                    <InputAdornment position="start">
+                        <AccountCircleIcon />
+                    </InputAdornment>
+                ),
+            }}/>
+            <TextField id="password" type="password" label="Password" variant="outlined" InputProps={{
+                startAdornment: (
+                    <InputAdornment position="start">
+                        <VisibilityIcon />
+                    </InputAdornment>
+                ),
+            }}/>
             <Button id="login" size="small" onClick={ () => SendData({ id: userId, username: userName, password: userPass}) } endIcon={<SendIcon />} >
                 Login
             </Button>
-            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()} endIcon={<QuestionMarkIcon />}>
+            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()} >
                 Forgot password
             </Button>
         </>
