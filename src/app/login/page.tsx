@@ -4,7 +4,7 @@ import { Button, Paper, TextField, Grid, Box, Stack } from "@mui/material"
 import React from 'react';
 
 
-function SendData({string} : id) {
+function SendData({ id } : string) {
     // put actual stuff to look at user data here, ideally will look through our database for user data
 }
 
@@ -33,16 +33,15 @@ export default function Data() {
     return (
         <div className="tab">
                 <Stack spacing={2}>
-                    <Paper elevation={8} alignItems="flex-end">
-                        <Grid container spacing={2} align="center" justifyContent="center">
+                    <Paper elevation={4}>
+                        <Grid container spacing={2} justifyContent="center">
                             <Box sx={{
                                 p: 4,
                                 borderRadius: 6,
                                 display: 'grid',
                                 gridTemplateColumns: { md: '1fr 1fr' },
                                 gap: 2
-                            }}
-                            >
+                            }}>
                                 <Login></Login>
                             </Box>
                         </Grid>
