@@ -12,16 +12,16 @@ import ListItemText from '@mui/material/ListItemText';
 export default function Data() {
     const data = [
         {
-            logs: "Mr. Llama took out Dangerous Chemical, Chemical X, Chemical ???"
+            logs: "Mr. Llama took out Dangerous Chemical, Chemical X, Chemical ??? just now"
         },
         {
-            logs: "Ms. Eagle took out Dog Cells"
+            logs: "Ms. Eagle took out Dog Cells 30 minutes ago"
         },
         {
-            logs: "John took out Kryptonite"
+            logs: "John took out Kryptonite 52 minutes ago"
         },
         {
-            logs: "Mr. Steven's Growing Tissue, Cells of Mr. Pig"
+            logs: "Mr. Steven took out Growing Tissue, Cells of Mr. Pig 3 hours ago"
         },
         {
             logs: "X took out Material #13, Material #58 Y weeks ago"
