@@ -2,6 +2,7 @@
 
 import { Button, Paper, TextField, Grid, Box, Stack} from "@mui/material"
 import SendIcon from '@mui/icons-material/Send'
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import React from 'react';
 
 
@@ -19,12 +20,13 @@ function ForgotPass() {
 function Login() {
     return (
         <>
+            <h1> Login </h1>
             <TextField id="username" label="Username" variant="outlined" />
             <TextField id="password" label="Password" variant="outlined" />
             <Button id="login" size="small" onClick={ () => SendData('login')} endIcon={<SendIcon />} >
                 Login
             </Button>
-            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()}>
+            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()} endIcon={<QuestionMarkIcon />}>
                 Forgot my password
             </Button>
         </>
