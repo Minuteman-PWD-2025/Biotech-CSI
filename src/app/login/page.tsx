@@ -1,21 +1,21 @@
 ﻿'use client';
 
-import { Button, Paper, TextField, Grid, Box, Stack, InputAdornment} from "@mui/material"
+import { Button, Paper, TextField, Grid, Box, Stack, InputAdornment, IconButton} from "@mui/material"
 import SendIcon from '@mui/icons-material/Send'
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React from 'react';
 
 
-interface Data {
+interface LoginData {
     id: string;
     username: string;
     password: string;
 }
 
-function SendData({ id, username, password } : Data) {
+
+function SendData({ id, username, password } : LoginData) {
     // put actual stuff to look at user data here, ideally will look through our database for user data
     console.log("send data! " + id + " " + username + " " + password);
 }
@@ -33,6 +33,17 @@ function Login() {
     const userName = "logan walker";
     const userPass = "password test";
 
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    function HandlePasswordToggle() {
+        
+            setShowPassword((show) => !show)
+    }
+
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
+
     return (
         <>
             <h1> Login </h1>
@@ -42,11 +53,19 @@ function Login() {
                         <AccountCircleIcon />
                     </InputAdornment>
                 ),
-            }}/>
-            <TextField id="password" type="password" label="Password" variant="outlined" InputProps={{
+            }} />
+            <TextField id="password" type={showPassword ? "text" : "password"} label="Password" variant="outlined" InputProps={{
+
                 startAdornment: (
                     <InputAdornment position="start">
-                        <VisibilityIcon />
+                        <IconButton
+                            id="password"
+                            onClick={HandlePasswordToggle}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                        >
+                            {showPassword ? <VisibilityOff /> : <VisibilityIcon />}
+                        </IconButton>
                     </InputAdornment>
                 ),
             }}/>
