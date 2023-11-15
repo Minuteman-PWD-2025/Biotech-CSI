@@ -36,8 +36,7 @@ function Login() {
     const [showPassword, setShowPassword] = React.useState(false);
 
     function HandlePasswordToggle() {
-        
-            setShowPassword((show) => !show)
+        setShowPassword((show) => !show)
     }
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
