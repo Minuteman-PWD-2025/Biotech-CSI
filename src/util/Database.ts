@@ -44,6 +44,21 @@ export class Row {
 export default class Database {
     static requestUrl: string = "http://localhost:8080/api?";
 
+    // Returns a token or rejection
+    public static async authenticate(email: string, password: string): Promise<DatabaseResponse<string>> {
+        const query = querystring.stringify({email: email, password: password})
+        const response = await fetch(this.requestUrl.concat(query), {method: "POST"});
+        const json = await response.json();
+
+        return new Promise<DatabaseResponse<string>>(async resolve => {
+            resolve({
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? ""
+            })
+        })
+    }
+
     // `GET/token=${token}&table=${tableName}`
     // TODO: Implement Connection To Webserver
     public static async getTable(token: string, tableName: string): Promise<DatabaseResponse<Row[]>> {
