@@ -21,7 +21,7 @@ function Login() {
     };
 
     function SendData() {
-        // put actual stuff to look at user data here, ideally will look through our database for user data
+        console.log(inputValue.user+" "+inputValue.pass);
     }
 
     function ForgotPass() {
@@ -42,14 +42,14 @@ function Login() {
     return (
         <>
             <h1> Login </h1>
-            <TextField id="username" label="Username" variant="outlined" onChange={handleChange('user')} InputProps={{
+            <TextField id="username" label="Username" variant="outlined" value={inputValue.user} onChange={handleChange('user')} InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
                         <AccountCircleIcon />
                     </InputAdornment>
                 ),
             }} />
-            <TextField id="password" type={showPassword ? "text" : "password"} label="Password" variant="outlined" onChange={handleChange('pass')} InputProps={{
+            <TextField id="password" type={showPassword ? "text" : "password"} label="Password" variant="outlined" value={inputValue.pass} onChange={handleChange('pass')} InputProps={{
 
                 startAdornment: (
                     <InputAdornment position="start">
