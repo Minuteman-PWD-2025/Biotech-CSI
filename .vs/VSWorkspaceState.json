@@ -3,7 +3,7 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\logs",
+    "\\src\\app\\login",
     "\\src\\app\\materials",
     "\\src\\app\\overview",
     "\\src\\app\\people",
@@ -11,6 +11,6 @@
     "\\src\\components\\sections",
     "\\src\\util"
   ],
-  "SelectedNode": "\\src\\components\\sections\\Sidebar.tsx",
+  "SelectedNode": "\\src\\app\\layout.tsx",
   "PreviewInSolutionExplorer": false
 }

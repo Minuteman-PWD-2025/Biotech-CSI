@@ -8,30 +8,26 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React from 'react';
 
 
-interface LoginData {
-    id: string;
-    username: string;
-    password: string;
-}
-
-
-function SendData({ id, username, password } : LoginData) {
-    // put actual stuff to look at user data here, ideally will look through our database for user data
-    console.log("send data! " + id + " " + username + " " + password);
-}
-
-function ForgotPass() {
-    // put actual forgot password stuff here, sending stuff to emails and whatnot
-    console.log("forgot password! ");
-}
-
-
 function Login() {
 
 
-    const userId = "login";
-    const userName = "logan walker";
-    const userPass = "password test";
+    const [inputValue, sendInputValue] = React.useState({
+        user: String,
+        pass: String
+    });
+
+    const handleChange = (name: any) => (event : any) => {
+        sendInputValue({ ...inputValue, [name]: event.target.value });
+    };
+
+    function SendData() {
+        // put actual stuff to look at user data here, ideally will look through our database for user data
+    }
+
+    function ForgotPass() {
+        // put actual forgot password stuff here, sending stuff to emails and whatnot
+        console.log("forgot password! ");
+    }
 
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -46,14 +42,14 @@ function Login() {
     return (
         <>
             <h1> Login </h1>
-            <TextField id="username" label="Username" variant="outlined" InputProps={{
+            <TextField id="username" label="Username" variant="outlined" onChange={handleChange('user')} InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
                         <AccountCircleIcon />
                     </InputAdornment>
                 ),
             }} />
-            <TextField id="password" type={showPassword ? "text" : "password"} label="Password" variant="outlined" InputProps={{
+            <TextField id="password" type={showPassword ? "text" : "password"} label="Password" variant="outlined" onChange={handleChange('pass')} InputProps={{
 
                 startAdornment: (
                     <InputAdornment position="start">
@@ -68,7 +64,7 @@ function Login() {
                     </InputAdornment>
                 ),
             }}/>
-            <Button id="login" size="small" onClick={ () => SendData({ id: userId, username: userName, password: userPass}) } endIcon={<SendIcon />} >
+            <Button id="login" size="small" onClick={ () => SendData() } endIcon={<SendIcon />} >
                 Login
             </Button>
             <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()} >
