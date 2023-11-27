@@ -63,11 +63,11 @@ function Login() {
                         </IconButton>
                     </InputAdornment>
                 ),
-            }}/>
+            }} />
             <Button id="login" size="small" onClick={ () => SendData() } endIcon={<SendIcon />} >
                 Login
             </Button>
-            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass()} >
+            <Button id="forgot-pass" size="small" onClick={ () => ForgotPass() } >
                 Forgot password
             </Button>
         </>
