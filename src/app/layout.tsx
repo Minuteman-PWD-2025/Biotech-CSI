@@ -19,7 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-            <Login />
+        <Login />
+        {/*<Wrapper>{children}</Wrapper>*/}
       </body>
     </html>
   )
