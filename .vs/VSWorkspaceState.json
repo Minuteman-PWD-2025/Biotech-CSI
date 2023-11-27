@@ -3,10 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\login",
+    "\\src\\app\\materials",
+    "\\src\\app\\overview",
     "\\src\\components",
-    "\\src\\components\\sections",
     "\\src\\util"
   ],
-  "SelectedNode": "\\src\\components\\sections\\Header.tsx",
+  "SelectedNode": "\\src\\app\\materials\\page.tsx",
   "PreviewInSolutionExplorer": false
 }

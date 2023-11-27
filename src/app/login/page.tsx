@@ -10,7 +10,6 @@ import React from 'react';
 
 function Login() {
 
-
     const [inputValue, sendInputValue] = React.useState({
         user: String,
         pass: String
@@ -21,7 +20,7 @@ function Login() {
     };
 
     function SendData() {
-        console.log(inputValue.user+" "+inputValue.pass);
+        console.log(inputValue.user + " " + inputValue.pass);
     }
 
     function ForgotPass() {
