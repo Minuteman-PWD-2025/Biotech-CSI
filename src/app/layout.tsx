@@ -19,11 +19,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <Router>
             <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/people" element={<Wrapper>{children}</Wrapper>} />
-                    <Route path="/materials" element={<Wrapper>{children}</Wrapper>} />
-                    <Route path="/overview" element={<Wrapper>{children}</Wrapper>} />
-                    <Route path="/logs" element={<Wrapper>{children}</Wrapper>} />
+                <Route path="/" element={<Login />} />
+                <Route path="/people" element={<Wrapper>{children}</Wrapper>} />
+                <Route path="/materials" element={<Wrapper>{children}</Wrapper>} />
+                <Route path="/overview" element={<Wrapper>{children}</Wrapper>} />
+                <Route path="/logs" element={<Wrapper>{children}</Wrapper>} />
             </Routes>
         </Router>
       </body>

@@ -1,7 +1,8 @@
 ﻿'use client';
 
-import { Button, Paper, TextField, Grid, Box, Stack, InputAdornment, IconButton} from "@mui/material"
-import SendIcon from '@mui/icons-material/Send'
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Button, Paper, TextField, Grid, Box, Stack, InputAdornment, IconButton } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -9,6 +10,8 @@ import React from 'react';
 
 
 function Login() {
+
+    const navigate = useNavigate();
 
     const [inputValue, sendInputValue] = React.useState({
         user: String,
@@ -21,6 +24,7 @@ function Login() {
 
     function SendData() {
         console.log(inputValue.user + " " + inputValue.pass);
+        navigate('/overview');
     }
 
     function ForgotPass() {
