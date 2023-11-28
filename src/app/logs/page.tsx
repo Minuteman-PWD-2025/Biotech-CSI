@@ -83,9 +83,6 @@ export default function Data() {
                 <div className='box' style={{float: 'left', paddingRight: '10px'}}>
                     <List sx={style}>
                         <ListItem divider>
-                            <ListItemText primary="Entire Log (scroll down)" />
-                        </ListItem>
-                        <ListItem divider>
                             <ListItemText primary="Mr. Llama took out Dangerous Chemical, Chemical X, Chemical ??? 2 hours ago" />
                         </ListItem>
                         <ListItem divider>
@@ -114,7 +111,7 @@ export default function Data() {
                         </ListItem>
                     </List>
                 </div>
-                <div className='grid-item' style ={{float: 'right', width: '85vw'}}>
+                <div className='grid-item' style ={{float: 'right', width: '85vw', paddingRight: '10px'}}>
                     <MaterialReactTable table={table}/>
                 </div>
             </div>
