@@ -75,9 +75,8 @@ export default function Data() {
         maxHeight: 526,
         '& ul': { padding: 0 },
       };
-      //<MaterialReactTable table={table}/>
 
-      
+ 
     return (
         <div className="tab">
             <div className='div1' style={{display: 'inline-block', paddingRight: '10px'}}>
