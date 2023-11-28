@@ -79,42 +79,44 @@ export default function Data() {
  
     return (
         <div className="tab">
-            <div className='div1' style={{display: 'inline-block', paddingRight: '10px'}}>
-            <List sx={style}>
-                <ListItem divider>
-                    <ListItemText primary="Entire Log (scroll down)" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="Mr. Llama took out Dangerous Chemical, Chemical X, Chemical ??? 2 hours ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="Ms. Eagle took out Dog Cells 2 days ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="John took out Kryptonite 1 week ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="Mr. Steven took out Growing Tissue, Cells of Mr. Pig 1 week ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="X took out Material #13, Material #58 Y weeks ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="X took out Material #65 1 Month ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="X took out Material #23 Y Months ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="X took out Material #34, Material #98 1 year ago" />
-                </ListItem>
-                <ListItem divider>
-                    <ListItemText primary="X took out Material #65 1 Month ago" />
-                </ListItem>
-          </List>
-          </div>
-          <div className="div2" style={{display: 'inline-block', width: '81%'}}>
-          <MaterialReactTable table={table}/>
+            <div className='wrapper' style={{display: 'flex'}}>
+                <div className='box' style={{float: 'left', paddingRight: '10px'}}>
+                    <List sx={style}>
+                        <ListItem divider>
+                            <ListItemText primary="Entire Log (scroll down)" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="Mr. Llama took out Dangerous Chemical, Chemical X, Chemical ??? 2 hours ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="Ms. Eagle took out Dog Cells 2 days ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="John took out Kryptonite 1 week ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="Mr. Steven took out Growing Tissue, Cells of Mr. Pig 1 week ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="X took out Material #13, Material #58 Y weeks ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="X took out Material #65 1 Month ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="X took out Material #23 Y Months ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="X took out Material #34, Material #98 1 year ago" />
+                        </ListItem>
+                        <ListItem divider>
+                            <ListItemText primary="X took out Material #65 1 Month ago" />
+                        </ListItem>
+                    </List>
+                </div>
+                <div className='grid-item' style ={{float: 'right', width: '85vw'}}>
+                    <MaterialReactTable table={table}/>
+                </div>
             </div>
         </div>
     );
