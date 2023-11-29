@@ -23,7 +23,7 @@ function Login() {
     };
 
     function SendData() {
-        console.log(inputValue.user + " " + inputValue.pass);
+        //console.log(inputValue.user + " " + inputValue.pass);
         navigate('/overview');
     }
 
@@ -79,24 +79,25 @@ function Login() {
 
 
 export default function Data() {
-
     return (
-        <div className="tab">
-                <Stack spacing={2} width={360}>
-                    <Paper elevation={4}>
-                        <Grid container spacing={2} justifyContent="center">
-                            <Box sx={{
+        <div className="tab" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+            <Stack spacing={2} width={360}>
+                <Paper elevation={4}>
+                    <Grid container spacing={2} justifyContent="center">
+                        <Box
+                            sx={{
                                 p: 4,
                                 borderRadius: 6,
                                 display: 'grid',
                                 gridTemplateColumns: { md: '1fr' },
-                                gap: 2
-                            }}>
-                                <Login />
-                            </Box>
-                        </Grid>
-                    </Paper>
-                </Stack>
+                                gap: 2,
+                            }}
+                        >
+                            <Login />
+                        </Box>
+                    </Grid>
+                </Paper>
+            </Stack>
         </div>
     );
 }
