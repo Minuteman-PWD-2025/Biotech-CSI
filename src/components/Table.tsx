@@ -36,6 +36,7 @@ export default function Table({ data = []}: { data: Row[] }) {
         muiTablePaperProps: {
             elevation: 0,
         },
+        
     });
 
     return (
