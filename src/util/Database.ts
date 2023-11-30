@@ -1,5 +1,7 @@
 import querystring from 'querystring'
 
+const SEPARATOR: string = '|'
+
 export enum DatabaseResponseNames {
     ERROR = "Code",
     MESSAGE = "Message",
@@ -43,7 +45,7 @@ export class Row {
         this.data.forEach((value, key) => {
             if (!(removeNull && !value)) pairs.push(`${key},${value}`)
         })
-        return pairs.join('|')
+        return pairs.join(SEPARATOR)
     }
 }
 
