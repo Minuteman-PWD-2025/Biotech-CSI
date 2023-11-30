@@ -4,24 +4,40 @@ import { Row } from '@/util/Database';
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
 import React, { useMemo } from 'react';
 
-export default function Table({ data = []}: { data: Row[] }) {
-    const keys: Array<string> = (() => {
+export default function Table({ data = [] }: { data: Row[] }) {
+    console.log(data)
+    const getKeys = (): Array<string> => {
         const res: string[] = []
+
+        data.forEach(row => {
+            for (const key of Object.keys(row)) {
+                if (!res.includes(key)) res.push(key)
+            }
+        })
         
         return res
-    })()
-    const pairs: Array<{accessorKey: string, header: string}> = keys.map(val => {
-        return {accessorKey: val, header: val}
-    })
+    }
+    
+    const getPairs = (): Array<{accessorKey: string, header: string}> => {
+        const keys = getKeys()
+        const res: Array<{accessorKey: string, header: string}> = []
+
+        for (const key of keys) {
+            res.push({accessorKey: key, header: key})
+        }
+
+        return res
+    }
+
     const columns = useMemo(
         () => [
-            ...pairs
+            ...getPairs()
         ],
         [],
     );
 
     // An error has occurred- say it on the table that something went wrong.
-    if (keys.length == 0) {
+    if (getKeys().length == 0) {
         
     }
 
