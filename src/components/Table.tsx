@@ -1,23 +1,29 @@
 'use client';
 
-import Database, { Row } from '@/util/Database';
+import { Row } from '@/util/Database';
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 export default function Table({ data = []}: { data: Row[] }) {
+    const keys: Array<string> = (() => {
+        const res: string[] = []
+        
+        return res
+    })()
+    const pairs: Array<{accessorKey: string, header: string}> = keys.map(val => {
+        return {accessorKey: val, header: val}
+    })
     const columns = useMemo(
         () => [
-            {
-                accessorKey: 'id',
-                header: 'Id',
-            },
-            {
-                accessorKey: 'person',
-                header: 'Person',
-            },
+            ...pairs
         ],
         [],
     );
+
+    // An error has occurred- say it on the table that something went wrong.
+    if (keys.length == 0) {
+        
+    }
 
     const table = useMaterialReactTable({
         columns,
