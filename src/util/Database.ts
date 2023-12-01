@@ -37,12 +37,27 @@ export class Row {
         this.data.forEach((value, key) => {
             if (!(removeNull && !value)) pairs.push(`${key},${value}`)
         })
-        return pairs.join(';')
+        return pairs.join('|')
     }
 }
 
 export default class Database {
-    static requestUrl: string = "https://localhost:8080/api/";
+    static requestUrl: string = "http://localhost:8080/api?";
+
+    // Returns a token or rejection
+    public static async authenticate(email: string, password: string): Promise<DatabaseResponse<string>> {
+        const query = querystring.stringify({email: email, password: password})
+        const response = await fetch(this.requestUrl.concat(query), {method: "POST"});
+        const json = await response.json();
+
+        return new Promise<DatabaseResponse<string>>(async resolve => {
+            resolve({
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? ""
+            })
+        })
+    }
 
     // `GET/token=${token}&table=${tableName}`
     // TODO: Implement Connection To Webserver
@@ -53,9 +68,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? []
             })
         })
     }
@@ -69,9 +84,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<string[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? []
             })
         })
     }
@@ -85,8 +100,8 @@ export default class Database {
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
+                error: json.error ?? 404,
+                message: json.message ?? "",
                 data: void[]
             })
         })
@@ -101,8 +116,8 @@ export default class Database {
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
+                error: json.error ?? 404,
+                message: json.message ?? "",
                 data: void[]
             })
         })
@@ -117,9 +132,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json.error ?? 404,
+                message: json.message ?? "",
+                data: json.data ?? []
             })
         })
     }
