@@ -1,25 +1,32 @@
-import type { Metadata } from 'next'
+'use client'
+
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Wrapper from '@/components/Wrapper'
+import Login from './login/page'
 import { setCookie } from 'cookies-next'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'Biotech CSI',
-  description: 'Woo hoo!',
-}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
+    return (
     <html lang="en">
       <body className={inter.className}>
-        <Wrapper>{children}</Wrapper>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/people" element={<Wrapper>{children}</Wrapper>} />
+                <Route path="/materials" element={<Wrapper>{children}</Wrapper>} />
+                <Route path="/overview" element={<Wrapper>{children}</Wrapper>} />
+                <Route path="/logs" element={<Wrapper>{children}</Wrapper>} />
+            </Routes>
+        </Router>
       </body>
     </html>
   )
