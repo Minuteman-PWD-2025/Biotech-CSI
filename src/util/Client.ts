@@ -1,5 +1,5 @@
 import { getCookie } from 'cookies-next'
 
-export function getToken(): string {
-    return getCookie('token')?.toString() || "..."
+export function getToken(): string | undefined {
+    return getCookie('token')?.toString()
 }
