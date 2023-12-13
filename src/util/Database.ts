@@ -1,5 +1,13 @@
 import querystring from 'querystring'
 
+const SEPARATOR: string = '|'
+
+export enum DatabaseResponseNames {
+    ERROR = "Code",
+    MESSAGE = "Message",
+    DATA = "Data"
+}
+
 export interface DatabaseResponse<T> {
     error: number,
     message: string,
@@ -37,25 +45,40 @@ export class Row {
         this.data.forEach((value, key) => {
             if (!(removeNull && !value)) pairs.push(`${key},${value}`)
         })
-        return pairs.join(';')
+        return pairs.join(SEPARATOR)
     }
 }
 
 export default class Database {
-    static requestUrl: string = "https://localhost:8080/api/";
+    static requestUrl: string = "http://localhost:8080/api?";
+
+    // Returns a token or rejection
+    public static async authenticate(email: string, password: string): Promise<DatabaseResponse<string>> {
+        const query = querystring.stringify({email: email, password: password})
+        const response = await fetch(this.requestUrl.concat(query), {method: "POST"});
+        const json = await response.json();
+
+        return new Promise<DatabaseResponse<string>>(async resolve => {
+            resolve({
+                error: json[DatabaseResponseNames.ERROR] ?? 404,
+                message: json[DatabaseResponseNames.MESSAGE] ?? "",
+                data: JSON.parse(json[DatabaseResponseNames.DATA]) ?? ""
+            })
+        })
+    }
 
     // `GET/token=${token}&table=${tableName}`
     // TODO: Implement Connection To Webserver
     public static async getTable(token: string, tableName: string): Promise<DatabaseResponse<Row[]>> {
         const query = querystring.stringify({token: token, table: tableName})
-        const response = await fetch(this.requestUrl.concat(query), {method: 'GET'});
+        const response = await fetch(this.requestUrl.concat(query), {method: 'GET', cache: 'no-store'});
         const json = await response.json();
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json[DatabaseResponseNames.ERROR] ?? 404,
+                message: json[DatabaseResponseNames.MESSAGE] ?? "",
+                data: JSON.parse(json[DatabaseResponseNames.DATA]) ?? ""
             })
         })
     }
@@ -69,9 +92,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<string[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json[DatabaseResponseNames.ERROR] ?? 404,
+                message: json[DatabaseResponseNames.MESSAGE] ?? "",
+                data: json[DatabaseResponseNames.DATA] ?? ""
             })
         })
     }
@@ -85,9 +108,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: void[]
+                error: json[DatabaseResponseNames.ERROR] ?? 404,
+                message: json[DatabaseResponseNames.MESSAGE] ?? "",
+                data: json[DatabaseResponseNames.DATA] ?? ""
             })
         })
     }
@@ -101,9 +124,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<void>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: void[]
+                error: json[DatabaseResponseNames.ERROR] ?? 404,
+                message: json[DatabaseResponseNames.MESSAGE] ?? "",
+                data: json[DatabaseResponseNames.DATA] ?? ""
             })
         })
     }
@@ -117,9 +140,9 @@ export default class Database {
 
         return new Promise<DatabaseResponse<Row[]>>(async resolve => {
             resolve({
-                error: json.error,
-                message: json.message,
-                data: [...json.data]
+                error: json[DatabaseResponseNames.ERROR] ?? 404,
+                message: json[DatabaseResponseNames.MESSAGE] ?? "",
+                data: json[DatabaseResponseNames.DATA] ?? ""
             })
         })
     }
