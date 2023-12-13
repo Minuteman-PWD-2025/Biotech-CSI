@@ -16,9 +16,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  if (!getToken() && usePathname() != "/") {
-    redirect("/")
+  if (getToken() != "" && usePathname() != "/") {
+    //console.log(getToken());
+
+    //redirect("/")
   }
+  
 
   return (
     <html lang="en">

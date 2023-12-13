@@ -1,12 +1,12 @@
-﻿'use client';
-
-import { Navigate, useNavigate } from 'react-router-dom';
+﻿import { Navigate, useNavigate } from 'react-router-dom';
 import { Button, Paper, TextField, Grid, Box, Stack, InputAdornment, IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React from 'react';
+import Database from '@/util/Database';
+import { setToken } from '@/util/Client';
 
 
 function Login() {
@@ -24,7 +24,10 @@ function Login() {
 
     function SendData() {
         //console.log(inputValue.user + " " + inputValue.pass);
-        navigate('/overview');
+        Database.authenticate(inputValue.user.toString(), inputValue.pass.toString()).then(res => {
+            setToken(res.data);
+            navigate('/overview');
+        })
     }
 
     function ForgotPass() {

@@ -54,7 +54,7 @@ export default class Database {
 
     // Returns a token or rejection
     public static async authenticate(email: string, password: string): Promise<DatabaseResponse<string>> {
-        const query = querystring.stringify({email: email, password: password})
+        const query = querystring.stringify({email, password})
         const response = await fetch(this.requestUrl.concat(query), {method: "POST"});
         const json = await response.json();
 
@@ -62,7 +62,7 @@ export default class Database {
             resolve({
                 error: json[DatabaseResponseNames.ERROR] ?? 404,
                 message: json[DatabaseResponseNames.MESSAGE] ?? "",
-                data: JSON.parse(json[DatabaseResponseNames.DATA]) ?? ""
+                data: json[DatabaseResponseNames.DATA] ?? ""
             })
         })
     }
