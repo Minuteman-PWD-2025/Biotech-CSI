@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { Navigate, useNavigate } from 'react-router-dom';
+import Database from '../../util/Database';
 import { Button, Paper, TextField, Grid, Box, Stack, InputAdornment, IconButton } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -23,8 +24,16 @@ function Login() {
     };
 
     function SendData() {
-        //console.log(inputValue.user + " " + inputValue.pass);
-        navigate('/overview');
+        const { user, pass } = inputValue;
+        const authResult = Database.authenticate(String(user), String(pass));
+
+        // this should probobaly work but i cant connect to the database
+        if (typeof authResult === 'number' && authResult === 404) {
+            console.log("FAILED!");
+        }
+        else {
+            navigate('/overview');
+        }
     }
 
     function ForgotPass() {
