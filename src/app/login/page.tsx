@@ -31,8 +31,11 @@ function Login() {
         if (typeof authResult === 'number' && authResult === 404) {
             console.log("FAILED!");
         }
-        else {
+        else if (typeof authResult === 'number' && authResult === 0) {
             navigate('/overview');
+        }
+        else {
+            console.log("failed!!!!!! :3");
         }
     }
 
