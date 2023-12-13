@@ -24,8 +24,8 @@ function Login() {
     };
 
     function SendData() {
-        const { user, pass } = inputValue;
-        const authResult = Database.authenticate(String(user), String(pass));
+
+        const authResult = Database.authenticate(String(inputValue.user), String(inputValue.pass));
 
         // this should probobaly work but i cant connect to the database
         if (typeof authResult === 'number' && authResult === 404) {
