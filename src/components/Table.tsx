@@ -1,23 +1,45 @@
 'use client';
 
-import Database, { Row } from '@/util/Database';
+import { Row } from '@/util/Database';
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
-export default function Table({ data = []}: { data: Row[] }) {
+export default function Table({ data = [] }: { data: Row[] }) {
+    console.log(data)
+    const getKeys = (): Array<string> => {
+        const res: string[] = []
+
+        data.forEach(row => {
+            for (const key of Object.keys(row)) {
+                if (!res.includes(key)) res.push(key)
+            }
+        })
+        
+        return res
+    }
+    
+    const getPairs = (): Array<{accessorKey: string, header: string}> => {
+        const keys = getKeys()
+        const res: Array<{accessorKey: string, header: string}> = []
+
+        for (const key of keys) {
+            res.push({accessorKey: key, header: key})
+        }
+
+        return res
+    }
+
     const columns = useMemo(
         () => [
-            {
-                accessorKey: 'id',
-                header: 'Id',
-            },
-            {
-                accessorKey: 'person',
-                header: 'Person',
-            },
+            ...getPairs()
         ],
         [],
     );
+
+    // An error has occurred- say it on the table that something went wrong.
+    if (getKeys().length == 0) {
+        
+    }
 
     const table = useMaterialReactTable({
         columns,
@@ -30,6 +52,7 @@ export default function Table({ data = []}: { data: Row[] }) {
         muiTablePaperProps: {
             elevation: 0,
         },
+        
     });
 
     return (

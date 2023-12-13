@@ -5,6 +5,7 @@ import './globals.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Wrapper from '@/components/Wrapper'
 import Login from './login/page'
+import { setCookie } from 'cookies-next'
 
 const inter = Inter({ subsets: ['latin'] })
 

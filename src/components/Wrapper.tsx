@@ -24,7 +24,6 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
         [globalTheme],
     );
 
-
     return (
         <ThemeProvider theme={tableTheme}>
             <div className="wrapper">
